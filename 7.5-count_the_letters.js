@@ -11,8 +11,7 @@ function countTheLetter(anArray){
  for(let i=0; i< stringArray.length; i++){
   aChar = stringArray[i].toLowerCase();
   count = lettersCount[aChar];
-  lettersCount[aChar] = count ? count +1 : 1;
-  
+  lettersCount[aChar] = count ? count +1 : 1;  
  }
  console.log(lettersCount);
 }
