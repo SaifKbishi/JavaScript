@@ -66,10 +66,8 @@ function allBornBefore1990(arr){
 }
 
 function filterYear1990(years){
-
  let birthday = `${years.birthday}`;
  birthday = parseInt(birthday.slice(-4));
-
  if(birthday < 1990){
   //console.log('hello, birthday < 1990');
   return{ //returning the object
@@ -82,8 +80,27 @@ function filterYear1990(years){
 //console.log('allBornBefore1990: ',allBornBefore1990(data));
 
 //10.3.3
+let favoriteFoodsCount ={};
+function allFoods(data){
+  console.log('all foods:');
+  data.forEach(food => {
+    let shortcut = food.favoriteFoods.meats;
+    /*for(let i=0; i< food.favoriteFoods.meats.length; i++){
+      count = favoriteFoodsCount[food.favoriteFoods.meats[i]];
+      favoriteFoodsCount[food.favoriteFoods.meats[i]] = count ? count +1 :1;
+    }*/
+    for(let i=0; i< shortcut.length; i++){//with shortcut
+      count = favoriteFoodsCount[shortcut[i]];
+      favoriteFoodsCount[shortcut[i]] = count ? count +1 :1;
+    }
+    for(let i=0; i< food.favoriteFoods.fish.length; i++){
+      count = favoriteFoodsCount[food.favoriteFoods.fish[i]];
+      favoriteFoodsCount[food.favoriteFoods.fish[i]] = count ? count +1 :1;
+    }
+  });
+  console.log(favoriteFoodsCount);
+}
 
-
-
+allFoods(data);
 //cd bootcamp\BC_exercises\js 
 //node 10.3-massaging_data_with_map.js

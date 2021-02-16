@@ -56,8 +56,9 @@ function isVowel(bChar){
 //vowelCount(string);
 
 //10.2.5
-let capArray=[];
+
 function capitalize(aString){
+ let capArray=[];
  let arrString= aString.split('');
  arrString.forEach(char =>{
   capArray.push(char.toUpperCase());
@@ -66,14 +67,45 @@ function capitalize(aString){
  //console.log(capArray);
  return capArray.join('');
 }
-console.log('capitalize',capitalize(string));
+//console.log('capitalize all string: \n',capitalize(string));
 
 //10.2.6
-function shiftLetters(){
- 
+
+function shiftLetters(aString){
+  let stringArray = aString.split('');
+  let aString2=[];
+
+  stringArray.forEach(char =>{
+   aString2.push(prevLetter(char));
+  });
+  let str= aString2.join('');
+  return str;
 }
+function prevLetter(aChar){  
+ return String.fromCharCode((aChar.charCodeAt(0)-1));
+}
+//console.log('shiftLetters: ',shiftLetters('bcdefg'));
 
-
+//10.2.7
+let flag=1;
+function swapCase(aString){
+ let wordsArray = aString.split(' ');
+ let capitalArray =[];
+ //debugger;
+ //console.log(wordsArray);
+ wordsArray.forEach(word => {
+  if(flag){
+   flag=0;
+   capitalArray.push(capitalize(word));   
+  }else{
+   flag=1;
+   capitalArray.push(word);   
+  }  
+ });
+ return capitalArray.join(' ');
+}
+console.log(swapCase(string));
+//const string = "Hello and Good Day Your Welcome with a hotdog and ahamburgers";
 
 //cd bootcamp\BC_exercises\js 
 //node 10.2-forEach_Mapping.js
