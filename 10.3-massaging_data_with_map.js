@@ -79,7 +79,7 @@ function filterYear1990(years){
 }
 //console.log('allBornBefore1990: ',allBornBefore1990(data));
 
-//10.3.3
+//10.3.3    - map reduce
 let favoriteFoodsCount ={};
 function allFoods(data){
   console.log('all foods:');
@@ -104,3 +104,15 @@ function allFoods(data){
 allFoods(data);
 //cd bootcamp\BC_exercises\js 
 //node 10.3-massaging_data_with_map.js
+
+/*
+let favoriteFoodsCount2 ={};
+const 
+favFoods = data.food.favoriteFoods.map( aFood ={
+  const container ={};
+  container[aFood.]
+})
+
+
+
+allFoods2(data);*/

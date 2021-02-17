@@ -52,10 +52,20 @@ school.assignStudent = (stuID, subject)=>{
  freeTeacher.capacityLeft--; 
  console.log(freeTeacher);
 };
-
-
+school.assignTeachersSubject = (teaID, newSubject)=>{
+ let freeTeacher = school.teachers.find(teacher => {
+  if(!teacher.subjects.includes(newSubject) && teacher.id ===teaID){  
+   return teacher;   
+  }else{
+   console.log('not an option');
+  }
+ });
+  freeTeacher.subjects.push(newSubject);
+ console.log(freeTeacher);
+}
 
 school.assignStudent(10, 'biology');
+school.assignTeachersSubject(2, "biology");
 
 //cd bootcamp\BC_exercises\js 
 //node 11.2-school_methods.js

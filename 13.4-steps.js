@@ -9,11 +9,26 @@ function steps(n){
   for(let k=n-i;k>=1; k--)
   {
    process.stdout.write('$');  
-  }  
+  }
   console.log('');
  }
 }
 steps(6);
+console.log('*************************');
+/********************/
+function steps2(n){
+ for(let i=1; i< n+1; i++)
+ { 
+   process.stdout.write('#'); 
+  for(let k=n-i;k>=1; k--)
+  {
+   process.stdout.write('$');  
+  }
+  console.log('');
+ }
+}
+//steps2(6);
 
 //cd bootcamp\BC_exercises\js 
 //node 13.4-steps.js
+

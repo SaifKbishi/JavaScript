@@ -59,7 +59,7 @@ function movie_title(obj){
   title: `${obj.title}`
  }
 }
-//console.log('map array01: ', id_nameMap(newReleases));
+console.log('map array01: ', id_nameMap(newReleases));
 
 const newArray2 = newReleases.map(function(movie){
  return{ //START OF THE OBJECT
@@ -69,11 +69,8 @@ const newArray2 = newReleases.map(function(movie){
 });
 console.log('NEW map array: ', newArray2);
 
-
-
 //cd bootcamp\BC_exercises\js 
 //node 10.1-map_and_forEach.js
-
 
 
 
