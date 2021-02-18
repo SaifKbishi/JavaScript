@@ -101,18 +101,7 @@ function allFoods(data){
   console.log(favoriteFoodsCount);
 }
 
-allFoods(data);
+//allFoods(data);
 //cd bootcamp\BC_exercises\js 
 //node 10.3-massaging_data_with_map.js
 
-/*
-let favoriteFoodsCount2 ={};
-const 
-favFoods = data.food.favoriteFoods.map( aFood ={
-  const container ={};
-  container[aFood.]
-})
-
-
-
-allFoods2(data);*/
