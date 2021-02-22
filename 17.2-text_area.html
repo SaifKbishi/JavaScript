@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>text area</title>
+</head>
+<body>
+ <form action="#" id="jobform">
+  <div>
+   <h3>why are you interested in this job?</h3>
+   <textarea rows="4" cols="50" id="textAreaInput" name="comment" form="jobform"></textarea>
+  </div>  
+  <input type="button" id="tbnSubmit" value="Click here">
+</form>
+<p id="message"></p>
+<br>
+<script>
+
+ const mySubmit = document.getElementById("tbnSubmit");
+ const myTextArea = document.getElementById("textAreaInput");
+ const message = document.getElementById("message");
+ 
+ mySubmit.addEventListener('click', function(){  
+  let TAlength = myTextArea.value.length;
+  console.log('value: ',TAlength);
+  if(TAlength < 100){
+   document.getElementById("message").innerHTML = "Your inout is less than 100";
+  }
+ });
+
+ 
+  
+ 
+</script>
+</body>
+</html>
+
+

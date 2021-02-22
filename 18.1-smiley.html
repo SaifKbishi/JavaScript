@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Smiley</title>
+</head>
+<body>
+ <h3>How many smileys do you wanr to see?</h3>
+ <div id="myInput">
+  <input id="textInput" type="text">
+  <button id="btnSubmit">Submit</button> 
+ </div> 
+
+ <script>
+  const mySubmit = document.getElementById('btnSubmit');
+  const textInput = document.getElementById('textInput');
+  const myInput = document.getElementById('myInput');
+  const myDiv = document.createElement('div');
+  myDiv.className ='imagesDiv';
+  
+  let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1024px-SNice.svg.png'
+
+  myInput.insertAdjacentElement('afterend', myDiv);
+
+  mySubmit.addEventListener('click', ()=>{
+   let numberOfSmileies = textInput.value;
+   myDiv.innerHTML = "";
+   //debugger;
+   if(numberOfSmileies != NaN)
+   {
+    console.log(numberOfSmileies);
+    for(let i=0; i< numberOfSmileies; i++){     
+     let smileyIMG = document.createElement('img');
+     smileyIMG.src = imgUrl;
+     smileyIMG.width= 200;
+     myDiv.insertAdjacentElement('afterbegin', smileyIMG);
+    }   
+   }   
+  })
+
+ </script>
+</body>
+</html>

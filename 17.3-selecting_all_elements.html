@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>selecting all elements</title>
+</head>
+<body>
+ <div id="myFirstDiv"></div>
+ <div id="mySecondDiv"></div>
+ <div id="myThridDiv"></div>
+ <div id="myFourthDiv"></div>
+
+ <script>
+  const myFirstDiv = document.querySelector("#myFirstDiv");
+  const mySecondDiv = document.querySelector("#mySecondDiv");
+  const myThirdDiv = document.querySelector("#myThirdDiv");
+  const myFourthDiv = document.querySelector("#myFourthDiv");
+
+  const all = document.querySelectorAll('div');
+ // const[myFirstDiv, mySecondDiv, myThridDiv, myFourthDiv] = [...all];
+
+ // const nums = [1,2];
+ // const [a,b] = [...nums]
+ /******************************************/
+  /*const elements = new Map();
+  all.forEach((el) =>{
+   elements.set(el.id. el.innerHTML)
+  })*/
+/******************************************/
+
+  const elements ={};
+  all.forEach((elem) => elements[elem.id] = elem.innerHTML);
+  console.log(elements.id=2);
+ </script>
+</body>
+</html>
