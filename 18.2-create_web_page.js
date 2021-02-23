@@ -1,11 +1,22 @@
 
 const section = document.createElement('section');
 const navbar = document.createElement('div');
+navbar.classList.add('navbar');
 const logo = document.createElement('div');
 const navmenu = document.createElement('div');
 const navmenu_ul = document.createElement('ul');
 const navmenu_li1 = document.createElement('li');
 const li_link1 = document.createElement('a');
+navmenu_ul.classList.add('navMenu');
+navmenu_ul.style.listStyleType='none';
+
+const welcomemsg = `
+<div class="msg">
+<h2>welcome to the</h2>
+<h1>banff national park</h1>
+</div>`;
+const welcome =document.createElement('div');
+welcome.innerHTML = welcomemsg;
 
 li_link1.textContent = 'Home';
 li_link1.href= '#';
@@ -20,23 +31,15 @@ li_link4.textContent = 'What to see';
 li_link4.href= '#';
 
 const navmenu_li2 = navmenu_li1.cloneNode(true);
-//navmenu_li2.textContent = 'About';
 const navmenu_li3 = navmenu_li1.cloneNode(true);
-//navmenu_li3.textContent = 'WildLife';
 const navmenu_li4 = navmenu_li1.cloneNode(true);
 //navmenu_li4.textContent = 'What to see';
 
-/*styling */
-/*navbar.style.display = 'flex';
-navbar.style.justifyContent = 'space-betwen';
-navmenu_ul.style.display = 'flex';
-navmenu_ul.style.justifyContent = 'flex-end';
-navmenu_li1.style.padding = '5px 10px';*/
 
 
 
 let bgImgUrl = 'https://upload.wikimedia.org/wikipedia/commons/9/91/Peyto_Lake-Banff_NP-Canada.jpg';
-
+//section.style.backgroundImage = bgImgUrl;
 //const section = document.createElement
 
 navmenu_li1.insertAdjacentElement('afterbegin',li_link1);
@@ -53,7 +56,7 @@ navmenu.insertAdjacentElement('afterbegin',navmenu_ul);
 
 navbar.insertAdjacentElement('beforeend',navmenu);
 navbar.insertAdjacentElement('afterbegin',logo);
-
+navbar.insertAdjacentElement('beforeend', welcome);
 section.insertAdjacentElement('afterbegin',navbar);
 
 document.body.appendChild(section);

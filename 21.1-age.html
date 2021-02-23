@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Drink or not</title>
+</head>
+<body>
+ 
+ <script>
+  const mainDiv = document.createElement('div');
+  mainDiv.classList.add('main');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.classList.add('input');
+  const btn = document.createElement('input');
+  btn.classList.add('btn');
+  btn.type = 'button';
+  btn.value ='Drink?'
+  
+  const messageArea = document.createElement('div');
+
+  const drinkMessage = document.createElement('h1');
+  drinkMessage.textContent = 'You can drink a beer';
+  const NoDrinkMessage = document.createElement('h3');
+  NoDrinkMessage.textContent = 'You are too young for drinking';
+
+  btn.addEventListener('click', ()=>{
+   messageArea.innerHTML ="";
+   let age = input.value;
+   if(age != NaN && age >0){
+    (age > 18)? messageArea.appendChild(drinkMessage) : messageArea.appendChild(NoDrinkMessage);
+   }
+   
+  });
+
+
+  mainDiv.insertAdjacentElement('afterbegin',input);
+  mainDiv.insertAdjacentElement('beforeend', btn);
+  mainDiv.insertAdjacentElement('beforeend',messageArea);
+
+  document.body.appendChild(mainDiv); 
+ </script>
+</body>
+</html>

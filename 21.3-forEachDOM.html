@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Users</title>
+</head>
+<body>
+
+ 
+
+ <script>
+  const users = [
+  {
+   id: 167464,
+   firstName: "Jimmy",
+   lastName: "Arnold",
+   email: "jimmya@gmail.com",
+  },
+  {
+   id: 578447,
+   firstName: "Martha",
+   lastName: "Goldman",
+   email: "gold@hotmail.com",
+  },
+  {
+   id: 864578,
+   firstName: "Tim",
+   lastName: "Burton",
+   email: "timmy.hotmail.com",
+  },
+  ];
+
+  const mainDiv = document.createElement('div');
+  const ol = document.createElement('ol');
+  ol.style.listStyleType='none';
+  
+  let li = document.createElement('li');
+
+  users.forEach( (user )=>{
+   let li = document.createElement('li');
+   //li.textContent = user.firstName +' ' + user.lastName;
+   li.textContent = `${user.firstName} ${user.lastName}` ;
+   li.dataset.id = user.id;
+   ol.insertAdjacentElement('afterbegin',li);
+   mainDiv.insertAdjacentElement('afterbegin',ol);
+  })
+  
+  
+  document.body.appendChild(mainDiv);
+ </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Copy inputs</title>
+ <style>
+   .nums{
+    width: 40px;
+   }
+ </style>
+</head>
+<body>
+ <h1>Text tocopy:</h1>
+ <h2 id="code" data-code="code">123456</h2>
+
+ <div class="main_box">
+  <div id="input_boxes">
+   <input type="text" class="nums" data-number1="num1" id="num1" value="" maxlength="1">
+   <input type="text" class="nums" data-number2="num2" id="num2" value="" maxlength="1">
+   <input type="text" class="nums" data-number3="num3" id="num3" value="" maxlength="1">
+   <input type="text" class="nums" data-number4="num4" id="num4" value="" maxlength="1">
+   <input type="text" class="nums" data-number5="num5" id="num5" value="" maxlength="1">
+   <input type="text" class="nums" data-number6="num6" id="num6" value="" maxlength="1">
+  </div>
+  <div>
+   <button id="verify">verify</button>
+  </div> 
+  <br/>
+  <div class="message">did you pass?</div>
+ </div>
+ <script>
+   const code = document.querySelector('#code');   
+   const inputBoxes = document.querySelector('#input_boxes');
+   const message = document.querySelector('.message');
+   const verify = document.querySelector('#verify');
+   const num1Box =  document.querySelector('#num1');
+   /*---verify --------*/
+   verify.addEventListener('click', ()=>{
+    console.log('verify is clicked');
+    let thecode = parseInt(code.innerText);
+    console.log('thecode: ',thecode);
+    let typedCode = codeInputValue.join('');
+    typedCode = parseInt(typedCode);
+    console.log(typeof(typedCode));
+    if(typedCode === thecode){
+     message.innerHTML = 'you input correct code after clicking verify button';
+    }
+   });
+   
+   const allFieldNumbers = document.querySelectorAll('input');
+   const[num1, num2, num3, num4, num5, num6] = [...allFieldNumbers];
+   
+   let correctInputs = 0;
+   let codeArr= code.innerText.split('');
+   console.log(codeArr);
+   let codeInputValue = [];
+   allFieldNumbers.forEach(function(input,index){
+     input.addEventListener('keyup', function(){
+      //console.log(index);
+      //console.log(allFieldNumbers[index].value);
+      //debugger;
+      if(allFieldNumbers[index].value === codeArr[index]){
+       codeInputValue.push(allFieldNumbers[index].value);
+       console.log('yes');
+       correctInputs++;
+       console.log('correctInputs: ',correctInputs);
+       allFieldNumbers[index++].focus();
+       console.log(allFieldNumbers[index++].focus());
+       
+      }else{
+       console.log('wrong');
+      }
+      if(correctInputs === 6){ message.innerHTML = 'you input correct code'; }
+      //message.innerHTML = 'you input correct code'; 
+      
+     });
+   });//forEach
+
+   /*afetr pasting*/
+   inputBoxes.addEventListener('paste',(event)=>{
+    let paste = (event.clipboardData || window.clipboardData).getData('text');
+    let pasteArr = paste.split('');
+    console.log(pasteArr);
+    
+    allFieldNumbers.forEach(function(input,index){//clear all
+     console.log('clearing');
+     allFieldNumbers[index].value = 'g';
+     
+    });
+    allFieldNumbers.forEach(function(input,index){//paste values
+     allFieldNumbers[index].value = pasteArr[index];
+    });
+   });
+
+   
+ </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<script src="./script.js" defer></script>
+</head>
+ <body>
+  <ul>
+   <li>title 1</li>
+   <li class="start-here">title 2</li>
+   <li>
+   <ul>
+    <li>sub title 1</li>
+    <li>sub title 2</li>
+    <li>sub title 3</li>
+    <!--here-->
+   </ul>
+   </li>
+   <li>title 3</li>
+  </ul>
+  <div>
+   <p>Hello World!</p>
+  </div>
+  <script>
+   const startHere = document.querySelector('.start-here');
+   startHere.textContent ="main title";  //Change the text from “title 2” to “main title”
+
+   const secondUL = startHere.nextElementSibling.firstElementChild;
+   const sub4= document.createElement('li'); //create li
+   sub4.textContent = 'sub title 4';
+   console.log(secondUL);
+   secondUL.insertAdjacentElement('beforeend',sub4);//Add another sub title with the text “sub title 4”
+   
+   //startHere.nextElementSibling.nextElementSibling  same efect
+   const lastli_elem = secondUL.parentElement.nextElementSibling; //last li element
+   lastli_elem.remove();
+
+   startHere.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.textContent='Master Of The Dom'; //Change the <title> element text to “Master Of The Dom”.
+   const head = startHere.parentElement.parentElement.parentElement.firstElementChild;
+
+   startHere.parentElement.nextElementSibling.lastElementChild.textContent = 'where is wes?' //Change the text of the <p> element ot something else of your
+
+  </script>
+ </body>
+</html>
