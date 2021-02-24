@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ticking Clock</title>
+ <style>
+  body{
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+  }
+  p{
+   font-size: 150px;
+  }
+ </style>
+</head>
+<body>
+
+ <div class="mainDiv">
+  <p class="ticking"><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></p>
+  <p class="ticking2"></p>
+ </div>
+
+ <script>
+  const tickingSeconds =document.querySelector('#seconds');
+  const tickingMinutes =document.querySelector('#minutes');
+  const tickingHours =document.querySelector('#hours');
+
+  let seconds=0;
+  let minutes=0;
+  let hours =0;
+
+  function addSeconds(){   
+   if(seconds < 10){
+    tickingSeconds.innerHTML = '0'+ seconds;
+   }else if(seconds <= 59){
+    tickingSeconds.innerHTML = seconds;
+   }else if(seconds === 60){
+    tickingSeconds.innerHTML = '00';
+    seconds=0;
+   }
+   seconds++;   
+  }
+  function addMinutes(){
+   if(minutes < 10){
+    tickingMinutes.innerHTML = '0'+ minutes;
+   }else if(minutes <= 59){
+    tickingMinutes.innerHTML = minutes;
+   }else if(minutes === 60){
+    tickingMinutes.innerHTML = '00';
+    minutes=0;
+   }
+   minutes++;   
+  }
+
+  function addHours(){
+   if(hours < 10){
+    tickingHours.innerHTML = '0'+ hours;
+   }else if(hours <= 59){
+    tickingHours.innerHTML = hours;
+   }else if(hours === 60){
+    tickingHours.innerHTML = '00';
+    hours=0;
+   }
+   hours++;
+  }
+
+  function setImmediateInterval(functionToRun, ms){
+   functionToRun();
+   return setInterval(functionToRun,  ms);
+  }
+  setImmediateInterval(addSeconds,1000);
+  setImmediateInterval(addMinutes,60000);
+  setImmediateInterval(addHours,3600000);
+ </script>
+</body>
+</html>

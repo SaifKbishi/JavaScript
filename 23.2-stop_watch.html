@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Stop watch</title>
+ <style>
+  *{
+   margin: 30px 0;
+  }
+  body{
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+  }
+  p{
+   font-size: 150px;
+  }
+  button{
+   font-size: 50px;
+   margin: 10px;
+  }
+ </style>
+</head>
+<body>
+ <div class="mainDiv">
+  <p class="ticking"><span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">000</span></p>
+ </div>
+ <div class="buttons">
+  <button class="startBtn">Start</button>
+  <button class="stopBtn">Stop</button>
+ </div>
+ <script>
+  let seconds=0;
+  let minutes=0;
+  let milliseconds=0;
+  const tickingMilliSeconds =document.querySelector('#milliseconds');
+  const tickingSeconds =document.querySelector('#seconds');
+  const tickingMinutes =document.querySelector('#minutes');
+  
+  const startBtn = document.querySelector('.startBtn');
+  const stopBtn = document.querySelector('.stopBtn');
+  startBtn.addEventListener('click', startTimer);
+  stopBtn.addEventListener('click', stopTimer);
+
+  const stop_Milliseconds = setTimeout(addMilliSeconds, 1);
+  //const stop_Milliseconds = setInterval(addMilliSeconds, 1);
+  const stop_Seconds = setTimeout(addSeconds, 1000);
+  const Stop_Minutes = setTimeout(addMinutes, 60000);
+
+  function startTimer(){
+   setImmediateInterval(addMilliSeconds,1);
+   setImmediateInterval(addSeconds,1000);
+   setImmediateInterval(addMinutes,60000);
+  }
+  function stopTimer(){
+   console.log('stop is clicked');
+   clearInterval(stop_Milliseconds);
+   clearInterval(stop_Seconds);
+   clearInterval(Stop_Minutes);
+  }
+  /********************/
+  function addMilliSeconds(){   
+   if(milliseconds < 10){
+    tickingMilliSeconds.innerHTML = '00'+ milliseconds;
+   }else if(milliseconds < 100){
+    tickingMilliSeconds.innerHTML = '0'+ milliseconds;
+   }else if(milliseconds <= 999){
+    tickingMilliSeconds.innerHTML = milliseconds;
+   }else if(milliseconds === 1000){
+    tickingMilliSeconds.innerHTML = '000';
+    milliseconds=0;
+   }
+   milliseconds++;   
+  }
+  function addSeconds(){   
+   if(seconds < 10){
+    tickingSeconds.innerHTML = '0'+ seconds;
+   }else if(seconds <= 59){
+    tickingSeconds.innerHTML = seconds;
+   }else if(seconds === 60){
+    tickingSeconds.innerHTML = '00';
+    seconds=0;
+   }
+   seconds++;   
+  }
+  function addMinutes(){
+   if(minutes < 10){
+    tickingMinutes.innerHTML = '0'+ minutes;
+   }else if(minutes <= 59){
+    tickingMinutes.innerHTML = minutes;
+   }else if(minutes === 60){
+    tickingMinutes.innerHTML = '00';
+    minutes=0;
+   }
+   minutes++;   
+  }
+ /********************/
+  function setImmediateInterval(functionToRun, ms){
+   functionToRun();
+   return setInterval(functionToRun,  ms);
+  }
+
+  /*JUST FOR TESTING*/
+  setTimeout(() => {
+   clearInterval(stop_Milliseconds);
+   clearInterval(stop_Seconds);
+   clearInterval(Stop_Minutes);
+  }, 5000);
+
+  /*
+  setImmediateInterval(addMilliSeconds,1);
+  setImmediateInterval(addSeconds,1000);
+  setImmediateInterval(addMinutes,60000);*/
+  
+ </script>
+</body>
+</html>

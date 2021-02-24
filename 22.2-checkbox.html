@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>DOM cardio</title>
+ <style>
+  img{
+   visibility: hidden;
+   object-fit: cover;
+   height: 100vh;
+  }
+ </style>
+</head>
+<body>
+ <div>
+  <p>Image or Not?</p>
+  <div>
+   <input type="checkbox" id="checkbox" name="checkbox" >
+   <label for="checkbox">Image</label>
+  </div>
+  <div class="image">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Peyto_Lake-Banff_NP-Canada.jpg" alt="">
+  </div>
+ </div>
+ <script >
+  const checkbox = document.querySelector('[name="checkbox"]');
+  const image = document.querySelector('img');
+  checkbox.addEventListener('change', function(event){
+   if(this.checked){
+    console.log('checked');
+    image.style.visibility='visible';
+   }else{
+    console.log('unchecked');
+    image.style.visibility='hidden';
+   }
+  });
+ </script>
+</body>
+</html>

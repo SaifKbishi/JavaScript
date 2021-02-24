@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Forms</title>
+</head>
+<body>
+<div class="div">
+ <form action="" name="signUp">
+   <label for="name">Name:</label><br>
+   <input type="text" id="name" value="john dodo" name="name">
+   <div>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" value="saif@gmail.com">
+   </div><br>
+   <div>
+   <label for="age" >Age: </label>
+    <select name="age" id="age">Age:>
+       <option value="18">Under 18</option>
+       <option value="24">18 - 24</option>
+       <option value="45">25 - 45</option>
+       <option value="55">46 - 55</option>
+       <option value="56">Above 56</option>
+    </select>
+   </div><br>     
+   <input type="submit" value="Submit" name="submit">
+ </form>
+ <div class="userMessage"></div>
+</div>
+ <script>
+  const signUpForm = document.querySelector('[name="signUp"]');
+  const userMessage = document.querySelector('.userMessage');
+
+   signUpForm.addEventListener('submit', function(event){
+   const submitDetails = confirm(
+    `Do you want to submit these details?\n 
+    Name: ${event.currentTarget.name.value} 
+    Email: ${event.currentTarget.email.value}
+    Age: ${event.currentTarget.age.value}`    
+   );
+   if(!submitDetails){
+    event.preventDefault();
+   }else{
+    userMessage.textContent ='congratulations you successfully sent this form';
+    event.preventDefault();
+   }
+   
+   /*console.log(event.currentTarget.name.value);
+   console.log(event.currentTarget.email.value);
+   console.log(event.currentTarget.age.value);*/
+
+  });
+ </script>
+</body>
+</html>

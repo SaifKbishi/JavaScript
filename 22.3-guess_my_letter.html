@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Game</title>
+ <style>
+  body{
+   display: flex;
+   text-align: center;
+   flex-direction: column;
+  }
+  .green{
+   color: green;
+  }
+  .red{
+   color: red;
+  }
+  #playAgain{
+   visibility: hidden;
+  }
+ </style>
+</head>
+<body>
+ <div>
+  <h1>welcome to the game</h1>
+  <div class="text" data-id="text">
+   <input type="text" name="theLetter" maxlength="1" value="?">
+  </div>
+  <h3 class="message" name="message">
+   here will be the message to the user
+  </h3>
+  <h2>keys guessed</h2>
+  <p class="letters" name="letters"></p>
+  <input type="button" id="playAgain" name="playAgain" value="Play again?">
+ </div>
+ <script>
+  //select textarea var
+  const theLetter = document.querySelector('[name="theLetter"]');
+  //select message
+  const message = document.querySelector('[name="message"]');  
+  //select letters
+  const letters = document.querySelector('[name="letters"]');
+  let guessedLetter ="";
+  //select button
+  const playAgainbtn = document.querySelector('[name="playAgain"]');    
+  let regex = /[a-zA-Z]/g;
+
+  //enter ONE letter key  
+  theLetter.addEventListener('keyup',logLetter);
+  theLetter.addEventListener('keydown',logLetter);
+  playAgainbtn.addEventListener('click', playAnotherGame);
+
+  function logLetter(event){   
+   if((event.currentTarget.value).match(regex)){
+    console.log(event.currentTarget.value);
+    guessedLetter =event.currentTarget.value;
+    //if(generateRandomLetter() === guessedLetter){   //if the letter is correct     
+    if('e' === guessedLetter){      //if the letter is correct     
+     
+     //display the letter in the text area  
+     theLetter.innerHTML = guessedLetter;
+     //if letter and guessed right display a GREEN message saying he was right
+     message.classList.remove('red');
+     message.classList.add('green');
+     message.innerHTML= 'you have guessed that right';
+     //display a CONFIRM button to play again
+     playAgainbtn.style.visibility='visible';
+     //if he won, not more gusses are allowed
+     e.preventDefault();
+    }else{
+     //display RED message saying he is wrong
+     message.innerHTML= 'Nope. wrong letter';
+     message.classList.remove('green');
+     message.classList.add('red');;
+    }    
+    event.currentTarget.value ="";
+
+   }else{    //input is not a letter
+    message.classList.remove('green');
+    message.classList.add('red');;
+    message.innerHTML= 'this is not allowed';
+    //diplay the gussed letter in letters
+    letters.innerText += guessedLetter;
+    event.currentTarget.value ="";
+   }   
+  }
+
+  //check if it is a letter
+  //if not a letter display a message
+  /*IF RIGHT*/
+   
+    
+  /*IF WRONG*/   
+  //if the same letter gussed more, display proper message too
+  /*this can be done by find function with array*/
+
+  /****** FUNCTIONS *****/
+  /*play another game*/
+  //if he wants to display, reset the DOM
+  //display a CONFIRM button to play again
+  function playAnotherGame(){
+   message.innerHTML='';
+   playAgainbtn.style.visibility='hidden';
+   letters.innerText="";
+  }
+
+  /*generate random letter*/
+  function generateRandomLetter(){
+   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+   return alphabet[Math.floor(Math.random() * alphabet.length)]
+  }
+ </script>
+</body>
+</html>
