@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Race 🏎</title>
+    <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <h1 class="text-center">Race</h1>
+    </div>
+    <hr />
+    <!-- You race HTML code here -->
+    <table class="racer-table">
+      <tr id="player1-race">
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="finish"></td>
+      </tr>
+      <tr id="player2-race">
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="finish"></td>
+      </tr>
+    </table>
+    <hr />
+    <div class="message"></div>
+    <div class="restart">
+      <button name="restart" class="btnRestart">Restart</button>
+    </div>
+    <script>
+      const player1 = document.querySelector('#player1-race');
+      const player2 = document.querySelector('#player2-race');
+      const message = document.querySelector('.message');      
+      const btnRestart = document.querySelector('[name="restart"]');
+      let player1_counter =0, player2_counter=0;
+      let winner =0;
+      
+      btnRestart.addEventListener('click', ()=>{        
+        winner =0;
+        message.textContent="";
+        player1.firstElementChild.classList.add('active');
+        player1.children[player1_counter].classList.remove('active')
+        player2.firstElementChild.classList.add('active');
+        player2.children[player2_counter].classList.remove('active')
+        player1_counter =0;
+        player2_counter =0;
+        btnRestart.style.visibility='hidden';
+      });
+
+      window.addEventListener('keyup',function handleKeyUp(e){      
+        if(e.key.toLocaleLowerCase() =='d' && player1_counter <11){          
+          player1.children[player1_counter].classList.remove('active');
+          player1_counter++;
+          player1.children[player1_counter].classList.add('active');          
+          if(player1.children[player1_counter].classList.contains('finish') ){
+            winner =1;
+            message.textContent='player 1 is the winner';
+            console.log('player 1 is the winner');
+            btnRestart.style.visibility='visible';
+            window.removeEventListener('keyup',handleKeyUp);
+          }
+        }
+
+        if(e.key.toLocaleLowerCase() =='arrowright' && player2_counter <11){
+          player2.children[player2_counter].classList.remove('active');
+          player2_counter++;
+          player2.children[player2_counter].classList.add('active');          
+          if(player2.children[player2_counter].classList.contains('finish') ){
+            winner =1;
+            message.textContent='player 2 is the winner';
+            console.log('player2 is the winner');
+            btnRestart.style.visibility='visible';
+            window.removeEventListener('keyup',handleKeyUp);
+          }
+        }        
+      });
+    </script>
+  </body>
+</html>

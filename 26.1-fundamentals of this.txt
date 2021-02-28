@@ -1,0 +1,25 @@
+//24.1.1
+this will point to the window, because it is in the global scope
+
+//24.1.2
+a.
+this is always scoped to a function.
+this keyword does not change when using an arrow function
+this will point to the window, because there is no higher function
+b.
+not to use arrow function, use function declaration
+
+//24.1.3
+this will point to the window
+because we have creatd a function
+
+//24.1.4
+this points to the owner functio myFuncArrow
+
+
+//24.1.5
+a. will point to the elment that has the class element
+b.
+
+
+

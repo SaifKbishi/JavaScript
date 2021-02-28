@@ -39,3 +39,19 @@ td:last-child.active {
 #player2-race td:last-child.active {
   background-image: url(images/player_2.png), url("images/finish.png");
 }
+
+.message{
+  text-align: center;
+  font-size: 50px;
+  padding-top: 30px;
+}
+.restart{
+  text-align: center;
+  font-size: 30px;  
+  display: flex;
+  justify-content: center;
+}
+.btnRestart{  
+  font-size: 30px;
+  visibility: hidden;
+}
