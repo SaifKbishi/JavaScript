@@ -11,6 +11,7 @@ const hero = {
     } else return this.power;
   }
  }
+ 
  function whoIsStronger(getStrength){
   const myStrength = 82;
   if (getStrength() < myStrength){
@@ -18,7 +19,7 @@ const hero = {
   } else return "You are stronger";
  }
  
-console.log(whoIsStronger(this.getStrength(hero)));
+console.log(whoIsStronger(hero.getStrength);
 
 
 

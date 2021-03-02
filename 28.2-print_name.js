@@ -11,8 +11,7 @@ const bca = {
 }
 
 console.log(bca.printName());
-console.log(bca.delayedName.bind(bca));
-console.log(bca.delayedName.bind({name: 'dfsf'}));
+console.log(bca.delayedName.apply(bca));
 
 
 //cd bootcamp\BC_exercises\js 

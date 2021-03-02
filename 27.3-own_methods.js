@@ -13,11 +13,10 @@ Array.prototype.myFilter = function(callback){
 console.log('myFilter function: ',words.myFilter(doSomeThingFunction3));
 
 function doSomeThingFunction3(element){
- if(element.length > 3){
+ if(element.length > 5){
   return true;
  } 
 }
-
 
 
 
