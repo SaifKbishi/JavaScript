@@ -1,0 +1,11 @@
+.displayArea{
+ display: flex;
+}
+
+.card:hover{
+ cursor: pointer;
+}
+
+.card{
+ margin: 5px;
+}
