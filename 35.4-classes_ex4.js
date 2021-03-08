@@ -36,7 +36,14 @@ class Point{
  }
 
 }//Point
+let point01 = new Point(3,4);
+let point02 = new Point(3,5);
+let point03 = new Point(8,2);
+let point04 = new Point(6,3);
+let point05 = new Point(6,3);
 
+console.log('4 5',point04.isSame(point05));
+console.log('4 3',point04.isSame(point03));
 
 //cd bootcamp\BC_exercises\js 
 //node 35.4-classes_ex4.js
