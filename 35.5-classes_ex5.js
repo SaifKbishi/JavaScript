@@ -19,18 +19,26 @@ class PointWorld{
   });
  }
 sumOfXes(){
- /*let sumX = this.pointsList.foreach(element => {
-  this.pointsList.addToX(element.getX());  
-
- });
- return sumX;*/
  let sum =0;
  for(let i=0; i< this.pointsList.length; i++){
   sum += this.pointsList[i].getX();
  }
  return sum;
- //let sumX = this.pointsList.reduce((this.pointsList.addToX(), sum)=>{});
 }//sumOfXes
+
+isExist(aPoint){
+ //debugger;
+ for(let i=0; i< this.pointsList.length; i++){
+  if(this.pointsList[i].getX() === aPoint.getX()) {
+   if(this.pointsList[i].getY() === aPoint.getY()){
+    return true;
+   }  
+  }
+  else{
+   return false;
+  }
+ } 
+}
 
 }//PointWorld
 
@@ -90,7 +98,11 @@ console.log('4 5',point04.isSame(point05));
 console.log('4 3',point04.isSame(point03));
 
 console.log('sumOfXes', pointsArr.sumOfXes());
-
+let apoint = new Point(8,2);
+pointsArr.isExist(apoint);
+console.log('isExsit 82', pointsArr.isExist(apoint));
+let apoint1 = new Point(9,5);
+console.log('isExsit 95', pointsArr.isExist(apoint1));
 //cd bootcamp\BC_exercises\js 
 //node 35.5-classes_ex5.js
 
