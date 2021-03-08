@@ -17,12 +17,12 @@ console.log('working movie');
  * on NEW search clear old searches
  */
  //http://www.omdbapi.com/?apikey=cd09ef53&t=braveheart
- const cors = 'https://cors-anywhere.herokuapp.com/';
+ const cors = 'https://api.codetabs.com/v1/proxy?quest=';
  const baseEndpoint = 'https://www.omdbapi.com/?apikey=cd09ef53&';
  const posterEndpoint = 'https://img.omdbapi.com/?apikey=cd09ef53&';//poster API
  const moviesArray = [];
 
-
+ //const cors = 'https://cors-anywhere.herokuapp.com/';
  const searchMovie = async (query)=>{
   try{
    const requestMovies = await fetch(`${cors}${baseEndpoint}${query}`);
@@ -48,6 +48,11 @@ console.log('working movie');
   }
  }//searchMovie
 
+ function getUserSearchTerm(){
+  let searchValue = document.querySelector('#searchTxtFeild');
+  console.log(searchValue);
+  
+ }
  searchMovie('t=braveheart');
 
  const displayMovie = (aMovie)=>{
