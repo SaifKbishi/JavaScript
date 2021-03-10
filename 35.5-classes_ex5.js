@@ -103,6 +103,7 @@ pointsArr.isExist(apoint);
 console.log('isExsit 82', pointsArr.isExist(apoint));
 let apoint1 = new Point(9,5);
 console.log('isExsit 95', pointsArr.isExist(apoint1));
+
 //cd bootcamp\BC_exercises\js 
 //node 35.5-classes_ex5.js
 
