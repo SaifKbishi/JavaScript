@@ -1,0 +1,25 @@
+*{
+ box-sizing: border-box;
+ padding: 0;
+ margin: 0;
+}
+html{
+ font-size: 10px;
+ scroll-behavior: smooth;
+}
+h1{
+ padding: 2rem;
+}
+.main{
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
+}
+.time{
+ padding: 0 3px;
+}
+.addButton{
+ margin: 2px 0;
+ min-width: 150px
+}

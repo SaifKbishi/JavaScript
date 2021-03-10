@@ -2,8 +2,7 @@ const readlineSync = require('readline-sync');
 const todoList = [];
 let idCounter = 1;
 
-function addItem(){
- 
+function addItem(){ 
  let itemName = readlineSync.question('\nPlease enter Todo name: ');
  let newItem = {
   id : idCounter,
@@ -57,6 +56,8 @@ function unMarkAsDone(array, id){
 function listAll(array){
 //need to sort them by done / not done
 }//listAll
+
+
 
 addItem();
 addItem();

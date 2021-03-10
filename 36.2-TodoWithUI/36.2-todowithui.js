@@ -1,7 +1,7 @@
 console.log('todo working');
 class toDoItem{
  static id = 1000;
- constructor(context, isCompleted, creationTime) {
+ constructor(context) {
   this.id = toDoItem.id++;
   this.context = context;
   this.isCompleted = false;
@@ -48,7 +48,7 @@ class toDoList{
   if(this.todoItemsList.length > 0){
    //console.log(`length: ${this.todoItemsList.length}`);
    this.todoItemsList.forEach(element =>{
-    console.log(element.context);
+    console.log(`Name: ${element.context}, Status: ${element.isCompleted}, Creation date: ${element.creationTime}`);
    });
   }  
  }
@@ -61,8 +61,6 @@ class toDoList{
  }
 
 }//class toDoList
-
-
 
 /* let newList01 = new toDoList('firstList');
 let todo01 = new toDoItem('call mama' );
@@ -93,12 +91,12 @@ function myGetDate(){
 const toDoListDiv = document.querySelector('.toDoList');
 
 const todoItemDiv = `<div class="todoItemDiv">
-<input type="checkbox" class="itemStatus" name="itemStatus" value="" >
+<input type="checkbox" class="itemStatus" name="itemStatus">
 <input type="text" class="todotext" name="todo" value="" placeholder="type what to do" autofocus>
 <input type="button" name="deleteItem" class="deleteItem" data-type="delete" value="X">
 <span class='time'>${myGetDate()}</span></div>`;
 
-toDoListDiv.insertAdjacentHTML('afterbegin', todoItemDiv);
+toDoListDiv.insertAdjacentHTML('afterbegin', todoItemDiv);//add first item
 
 const addButtonDiv = document.createElement('div');
 addButtonDiv.classList.add('addButtonDiv');
@@ -114,56 +112,93 @@ let newList01 = new toDoList('firstList'); //create a new list
 addButton.addEventListener('click', (e)=>{// Event Listener to the ADD button
  
  let temp_todo = new toDoItem(); // create a new to do task
- //let textValue = document.querySelector('.todo').value;
  let textValue =e.target.parentNode.previousSibling.lastElementChild.children[1].value;
  console.log('textValue.length', textValue.length);
  if(textValue.length>0){
-  //if(e.target.parentNode.previousSibling.lastElementChild.children[1].value>0){
-   temp_todo.setContext(textValue);
-  //let statusCheckbox= document.querySelector('.itemStatus').value;
-  let statusCheckbox=e.target.parentNode.previousSibling.lastElementChild.children[0].value
+  temp_todo.setContext(textValue);
+  let statusCheckbox=e.target.parentNode.previousSibling.lastElementChild.children[0].value;
   temp_todo.setStatus(statusCheckbox);
-  newList01.addItem(temp_todo); 
-  console.log('printing list');
-  newList01.printList();
-  //console.log(e.target.parentNode.previousSibling.lastElementChild.children[1].value);
-     
+  newList01.addItem(temp_todo);
   //on click add new item 
   toDoListDiv.insertAdjacentHTML('beforeend', todoItemDiv);  
-  let ntodoItemDiv = document.querySelectorAll('.todoItemDiv');
-  let itemStatus = document.querySelector('.itemStatus');
-  itemStatus.addEventListener('change', updateIsCompleteStatus(e));
-  /*let todotext = document.querySelector('todotext');
-  todotext.addEventListener('click', enableEdit);*/
-  let deleteItem = document.querySelector('.deleteItem');
-  deleteItem.addEventListener('click', deleteTask(e));
-
-  function updateIsCompleteStatus(e){
-   console.log('checkbox is checked index');
-  }
-  function enableEdit(){
-   console.log('editing');
-  }
-  function deleteTask(e){
-   console.log('delete btn e.target.parentNode: ',e.target.parentNode);
-  }
-
-  for(let i=0; i< ntodoItemDiv.length; i++){
-   //ntodoItemDiv[i].removeEventListener('click',editATodoTask);
-   //ntodoItemDiv[i].addEventListener('click',editATodoTask);
-   console.log('ntodoItemDiv[i].firstElementChild: ',ntodoItemDiv[i].firstElementChild);
-   ntodoItemDiv[i].firstElementChild.removeEventListener('change', updateIsCompleteStatus());
-  }
-  for(let i=0; i< ntodoItemDiv.length; i++){
-   //ntodoItemDiv[i].removeEventListener('click',editATodoTask);
-   //ntodoItemDiv[i].addEventListener('click',editATodoTask);
-   console.log('ntodoItemDiv[i].firstElementChild: ',ntodoItemDiv[i].firstElementChild);
-   ntodoItemDiv[i].firstElementChild.addEventListener('change', updateIsCompleteStatus(e));
-  }
-
-  function editATodoTask(){
-   console.log('edit to do taks');
-  }
-
  }//if(textValue.length>0) 
+ let lastAddedTask =e.target.parentNode.previousSibling.lastElementChild;
+ console.log('lastAddedTask01: ',lastAddedTask);
+ //addEventListenersToTheToDoItems(lastAddedTask);
+ addEventListenersToTheToDoItems(lastAddedTask);
 });// Event Listener to the add button
+
+//add event listeners to the elements on the created toDoListDiv
+function addEventListenersToTheToDoItems(lastTask){
+ console.log('lastTask 132', lastTask);
+ //let lastTask =e.target.parentNode.previousSibling.lastElementChild;
+ let textValue = lastTask.previousElementSibling.children[1].value;
+ 
+ console.log('textValue.length', textValue.length);
+ if(textValue.length>0){
+  let old_todoItemDiv = document.querySelector('.todoItemDiv');
+  let new_todoItemDiv = old_todoItemDiv.cloneNode(true);
+  old_todoItemDiv.parentNode.replaceChild(new_todoItemDiv, old_todoItemDiv);
+
+  let itemStatus = document.querySelectorAll('.itemStatus');
+  for(let i=0; i<itemStatus.length; i++){
+   itemStatus[i].addEventListener('change', (e)=>{
+    if(e.target && e.target.classList.contains('itemStatus')){
+     console.log('checkbox value',e.target);
+     console.log('checkbox value',e.target.value);
+     if(e.target.value === true){
+      e.target.value = false
+     }else if(e.target.value === false){
+      e.target.value = true;
+     }    
+    }   
+   });
+  }
+  //console.log(itemStatus);
+  let todotext = document.querySelector('.todotext');
+  let deleteItem = document.querySelector('.deleteItem');
+  //itemStatus.addEventListener('change', updateIsCompleteStatus(eStatus));
+/*   itemStatus.addEventListener('change', (e)=>{
+   if(e.target && e.target.classList.contains('itemStatus')){
+    console.log('checkbox value',e.target);
+    console.log('checkbox value',e.target.value);
+    if(e.target.value === true){
+     e.target.value = false
+    }else{
+     e.target.value = true;
+    }    
+   }   
+  }); */
+  todotext.addEventListener('click', (e)=>{
+   console.log(e.target);
+  });
+  deleteItem.addEventListener('click', (e)=>{
+   console.log(e.target);
+  });
+
+ }
+
+}//addEventListenersToTheToDoItems
+
+
+function updateIsCompleteStatus(e){
+ console.log('checkbox is checked index');
+}
+function enableEdit(e){
+ console.log('editing');
+}
+function deleteTask(e){
+ console.log('delete btn e.target.parentNode: ',e.target.parentNode);
+}
+
+function saveDataToLS(){
+ let dataStr = JSON.stringify(newList01);
+ localStorage.setItem('newList01',dataStr);
+}
+function retrieveDataFromLS(){
+ let dataStr = localStorage.getItem('newList01');
+ newList01 = JSON.parse(dataStr);
+ if(!newList01){
+  newList01 = [];
+ }
+}
