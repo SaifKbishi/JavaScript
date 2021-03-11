@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.1-primative_data_types.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaifKbishi/JavaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaifKbishi/JavaScript/issues"
+  },
+  "homepage": "https://github.com/SaifKbishi/JavaScript#readme",
+  "devDependencies": {}
+}

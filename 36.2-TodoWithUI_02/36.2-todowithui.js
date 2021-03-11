@@ -10,15 +10,19 @@ function ToDo(name){
 function addNewTodoItem(name){
   let todoitem = new ToDo(name);
   todoList.push(todoitem);
+  saveDataToLS();
 }
 
 //remove item
 function removeTodoItem(index){
   todoList.splice(index, 1);
+  saveDataToLS();
 }
 function retrieveTodoItem(index){
   return todoList[index];
 }
+
+retrieveDataFromLS();
 
 function printList(){
   let html ='';
@@ -75,13 +79,13 @@ todoForm.addEventListener('submit', (e)=>{
 
 
 function saveDataToLS(){
-  let dataStr = JSON.stringify(newList01);
-  localStorage.setItem('newList01',dataStr);
+  let dataStr = JSON.stringify(todoList);
+  localStorage.setItem('todoList',dataStr);
  }
  function retrieveDataFromLS(){
-  let dataStr = localStorage.getItem('newList01');
-  newList01 = JSON.parse(dataStr);
-  if(!newList01){
-   newList01 = [];
+  let dataStr = localStorage.getItem('todoList');
+  todoList = JSON.parse(dataStr);
+  if(!todoList){
+    todoList = [];
   }
  }
